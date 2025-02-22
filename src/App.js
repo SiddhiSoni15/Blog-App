@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Counter from "./components/Counter";
+import { BsSun, BsMoon } from "react-icons/bs"; // Icons for dark mode
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`app ${darkMode ? "dark-mode" : ""}`}>
+      <nav className="navbar">
+        <h1>Counter</h1>
+        <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? <BsSun size={24} /> : <BsMoon size={24} />}
+        </button>
+      </nav>
+      <Counter />
     </div>
   );
-}
+};
 
 export default App;
